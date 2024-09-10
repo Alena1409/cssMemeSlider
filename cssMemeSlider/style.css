@@ -5,13 +5,17 @@
 }
 
 body {
-    background-color: rgb(9, 34, 78);
+    background-color: rgb(3, 23, 58);
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+input[type="radio"] {
+    display: none;
+}
+
 
 h3 {
     color:#fff
@@ -21,22 +25,25 @@ h3 {
     display: none;
 }
 
-.slider {
-    height: 90vh;
-    width: 90vw;
+.wrapper {
+    height: 90%;
+    width: 90%;
     overflow: hidden;
-    border: 0.0625rem solid #fff;
+    border: 0.07rem solid rgba(34, 104, 194, 0.1);
     display: flex;
     flex-direction: column;
-    position: relative;
-    row-gap: 2vh;
+    row-gap: 3vh;
+    border-radius: 0.5%;
+    box-shadow: 0 0 1rem 0 rgba(34, 104, 194, 0.53);
+    
 }
 
-.slides {
+.slider {
     display: flex;
     width: 500%;
-    height: auto;
+    height: 80%;
     transition: transform 0.6s ease;
+    
 }
 
 .slide {
@@ -48,74 +55,91 @@ h3 {
 .imge {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
+.con {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding: 1rem;
+}
 
 .navigation {
     display: flex;
     justify-content: center;
-    gap: 1vw;
-}
-
-.nav {
-    border-radius: 100%;
-    height: 2vw;
-    width: 2vw;
-    cursor: pointer;
-    background-color: #fff;
+    gap: 0.5vw;
     transition: all .4s ease;
 }
 
+.nav {
+    border-radius: 50%;
+    height: 3vh;
+    width: 3vh;
+    cursor: pointer;
+    background-color: white;
+    transition: all .4s ease;
+    border: 0.2rem solid rgb(3, 23, 58);
+}
+
 .nav:hover {
-    background-color: #95b0e2;
+    opacity: .6;
+    background-color: rgba(34, 104, 194, 0.53);
 }
 
-input[type="radio"] {
-    display: none;
-}
 
-#r1:checked ~ .slides .s1{
+
+/* переключение картинок */
+#r1:checked ~ .slider .s1{
     margin-left: 0;
 }
 
-#r2:checked ~ .slides .s1{
+#r2:checked ~ .slider .s1{
     margin-left: -20%;
 }
 
-#r3:checked ~ .slides .s1{
+#r3:checked ~ .slider .s1{
     margin-left: -40%;
 }
 
-#r4:checked ~ .slides .s1{
+#r4:checked ~ .slider .s1{
     margin-left: -60%;
 }
 
-#r5:checked ~ .slides .s1{
+#r5:checked ~ .slider .s1{
     margin-left: -80%;
 }
 
-#r1:checked ~ .text .t1{
+/* переключение текста */
+#r1:checked ~ .con .text .t1,
+#r2:checked ~ .con .text .t2,
+#r3:checked ~ .con .text .t3,
+#r4:checked ~ .con .text .t4,
+#r5:checked ~ .con .text .t5 {
     display: inline;
 }
 
-#r2:checked ~ .text .t2{
-    display: inline;
+/* переключение активой кнопки */
+#r1:checked ~ .con .navigation .k1,
+#r2:checked ~ .con .navigation .k2,
+#r3:checked ~ .con .navigation .k3,
+#r4:checked ~ .con .navigation .k4,
+#r5:checked ~ .con .navigation .k5 {
+    border: solid 0.07rem white;
+    background-color: transparent;
 }
 
-#r3:checked ~ .text .t3{
-    display: inline;
+@media (max-width: 560px) {
+    .slider {
+        height: 70%;
+    }
+    .con {
+        flex-direction: column;
+        gap: 2vh;
+        align-items:center;
+    }
+    .text {
+        text-align: center;
+        padding: 1rem;
+    }
 }
-
-#r4:checked ~ .text .t4{
-    display: inline;
-}
-
-#r5:checked ~ .text .t5{
-    display: inline;
-}
-
-
-
-
-
-
