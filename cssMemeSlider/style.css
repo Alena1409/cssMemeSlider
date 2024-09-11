@@ -12,16 +12,19 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 input[type="radio"] {
     display: none;
 }
 
-h3 {
-    color:#fff
-
-}
-.hidden {
-    display: none;
+.text h3 {
+    color:#fff;
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 2s ease-in-out, height 0s 1s;
+    font-size: 2.5vh;
 }
 
 .wrapper {
@@ -50,17 +53,18 @@ h3 {
     transition: 2s;
 }
 
-.imge {
+.image {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.con {
+.description {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
     padding: 1rem;
+    gap: 1rem;
 }
 
 .navigation {
@@ -71,11 +75,11 @@ h3 {
 
 .nav {
     border-radius: 50%;
-    height: 3vh;
-    width: 3vh;
+    height: 3.5vh;
+    width: 3.5vh;
     cursor: pointer;
     background-color: white;
-    border: 0.2rem solid rgb(3, 23, 58);
+    border: 1vh solid rgb(3, 23, 58);
     transition: 0.6s;
 }
 
@@ -105,29 +109,32 @@ h3 {
 }
 
 /* переключение текста */
-#r1:checked ~ .con .text .t1,
-#r2:checked ~ .con .text .t2,
-#r3:checked ~ .con .text .t3,
-#r4:checked ~ .con .text .t4,
-#r5:checked ~ .con .text .t5 {
-    display: inline;
+#r1:checked ~ .description .text .t1,
+#r2:checked ~ .description .text .t2,
+#r3:checked ~ .description .text .t3,
+#r4:checked ~ .description .text .t4,
+#r5:checked ~ .description .text .t5 {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+    transition: opacity 2s ease-in-out, height 0s;
 }
 
 /* переключение активой кнопки */
-#r1:checked ~ .con .navigation .k1,
-#r2:checked ~ .con .navigation .k2,
-#r3:checked ~ .con .navigation .k3,
-#r4:checked ~ .con .navigation .k4,
-#r5:checked ~ .con .navigation .k5 {
+#r1:checked ~ .description .navigation .n1,
+#r2:checked ~ .description .navigation .n2,
+#r3:checked ~ .description .navigation .n3,
+#r4:checked ~ .description .navigation .n4,
+#r5:checked ~ .description .navigation .n5 {
     border: solid 0.07rem white;
     background-color: transparent;
 }
 
-@media (max-width: 560px) {
+@media (max-width: 600px) {
     .slider {
         height: 70%;
     }
-    .con {
+    .description {
         flex-direction: column;
         gap: 2vh;
         align-items:center;
