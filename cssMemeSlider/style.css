@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.text h3 {
+    color:#fff;
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 2s ease-in-out, height 0s 1s;
+    font-size: 2.5vh;
+}
+
+.wrapper {
+    height: 90%;
+    width: 90%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    row-gap: 3vh;
+    border-radius: 0.5%;
+    box-shadow: 0 0 1rem 0 rgba(3, 23, 58, 0.53);
+    background-color: rgb(3, 23, 58);
+    
+}
+
+.slider {
+    display: flex;
+    width: 500%;
+    height: 80%;   
+}
+
+.slide {
+    width: 20%;
+    height: auto;
+    flex-shrink: 0;
+    transition: 2s;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.description {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 0.5vw;
+}
+
+.nav {
+    border-radius: 50%;
+    height: 3.5vh;
+    width: 3.5vh;
+    cursor: pointer;
+    background-color: white;
+    border: 1vh solid rgb(3, 23, 58);
+    transition: 0.6s;
+}
+
+.nav:hover {
+    opacity: .6;
+}
+
+/* переключение картинок */
+#r1:checked ~ .slider .s1{
+    margin-left: 0;
+}
+
+#r2:checked ~ .slider .s1{
+    margin-left: -20%;
+}
+
+#r3:checked ~ .slider .s1{
+    margin-left: -40%;
+}
+
+#r4:checked ~ .slider .s1{
+    margin-left: -60%;
+}
+
+#r5:checked ~ .slider .s1{
+    margin-left: -80%;
+}
+
+/* переключение текста */
+#r1:checked ~ .description .text .t1,
+#r2:checked ~ .description .text .t2,
+#r3:checked ~ .description .text .t3,
+#r4:checked ~ .description .text .t4,
+#r5:checked ~ .description .text .t5 {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+    transition: opacity 2s ease-in-out, height 0s;
+}
+
+/* переключение активой кнопки */
+#r1:checked ~ .description .navigation .n1,
+#r2:checked ~ .description .navigation .n2,
+#r3:checked ~ .description .navigation .n3,
+#r4:checked ~ .description .navigation .n4,
+#r5:checked ~ .description .navigation .n5 {
+    border: solid 0.07rem white;
+    background-color: transparent;
+}
+
+@media (max-width: 600px) {
+    .slider {
+        height: 70%;
+    }
+    .description {
+        flex-direction: column;
+        gap: 2vh;
+        align-items:center;
+    }
+    .text {
+        text-align: center;
+        padding: 1rem;
+    }
+}
